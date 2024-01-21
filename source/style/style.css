@@ -1,0 +1,391 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap");
+
+/* Color Scheme */
+:root {
+    /* Background Color */
+    --bg-dark-mode: hsla(235, 21%, 11%, 1);
+    --card-dark-mode: hsla(235, 24%, 19%, 1);
+    --bg-light-mode: hsla(0, 0%, 98%, 1);
+
+    /* Font Color */
+    --font-dark-mode: hsla(235, 39%, 85%, 1);
+    --font-dark-checked: hsla(235, 11%, 52%, 1);
+    --font-light-mode: hsla(235, 19%, 35%, 1);
+    --font-light-chekced: hsla(236, 9%, 61%, 1);
+
+    /* Border&Checkbox */
+    --border-dark-mode: hsla(233, 14%, 35%, 1);
+    --border-light-mode: hsl(233, 11%, 84%);
+    --border-hover-mode: hsla(206, 97%, 75%, 1), hsla(252, 95%, 75%, 1);
+    --check-box-mode: hsl(192, 100%, 67%), hsl(280, 87%, 65%);
+
+    /* Active Page */
+    --active-btn-mode: hsla(221, 100%, 35%, 1);
+}
+/* Normalize */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* CSS codes */
+html {
+    font-size: 62.5%;
+}
+body {
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 1.8rem;
+}
+.wrapper {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* display: flex;
+    flex-direction: column; */
+}
+.wrapper {
+    transition: color ease-in 500ms, background-color ease-in 500ms;
+    background-color: var(--bg-light-mode);
+    color: var(--font-light-mode);
+}
+.wrapper.dark {
+    background-color: var(--bg-dark-mode);
+    color: var(--font-dark-mode);
+}
+/* Hero of the app */
+header {
+    width: 100%;
+    height: 100%;
+    max-height: 30rem;
+    display: flex;
+    justify-content: center;
+    background-image: url("../img/bg-desktop-light.jpg");
+    background-position: top center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    padding: 0 2rem;
+}
+.dark header {
+    background-image: url("../img/bg-desktop-dark.jpg");
+}
+.titel {
+    width: 100%;
+    max-width: 54rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 7rem;
+    color: var(--bg-light-mode);
+}
+.titel button {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    width: 2.6rem;
+}
+.dark header button img {
+    transition: transform ease-in 500ms;
+    transform: translateX(-2.6rem);
+}
+.wrapper button img {
+    transition: transform ease-in 500ms;
+}
+/* Main of the app */
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Input Section */
+.input {
+    height: 6rem;
+    width: 100%;
+    max-width: 54rem;
+    background-color: var(--bg-light-mode);
+    padding: 0 0 0 2.4rem;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    margin-top: -13rem;
+    display: flex;
+    align-items: center;
+}
+.dark .input {
+    background-color: var(--card-dark-mode);
+}
+.input-checkmark {
+    position: relative;
+    cursor: pointer;
+    font-size: 2.4rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.input-checkmark input {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+}
+.input-checkmark_check {
+    height: 2.4rem;
+    width: 2.4rem;
+    border-radius: 50%;
+    border: 2px solid var(--border-light-mode);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.dark .input-checkmark_check {
+    border-color: var(--border-dark-mode);
+}
+.inputActive .input-checkmark_check:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(var(--check-box-mode));
+    position: absolute;
+    transition: all ease-in 500ms;
+}
+.inputActive .input-checkmark_check:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 10;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../img/icon-check.svg");
+    transition: all ease-in 500ms;
+}
+input[type="text"] {
+    margin-left: 4.8rem;
+    border: 0;
+    height: 100%;
+    width: 100%;
+    font-size: 1.8rem;
+    font-family: "Josefin Sans", sans-serif;
+    color: var(--font-light-chekced);
+    background-color: var(--bg-light-mode);
+}
+input[type="text"] {
+    color: var(--font-dark-checked);
+}
+.dark input[type="text"] {
+    background-color: var(--card-dark-mode);
+}
+input[type="text"]:focus {
+    outline: none;
+}
+input::placeholder {
+    font-size: 1.8rem;
+    font-family: "Josefin Sans", sans-serif;
+    color: var(--font-light-chekced);
+}
+/* Task to be added section */
+main {
+    padding: 2.4rem;
+}
+.tasks {
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 2px 4px 10px 2px rgba(0, 0, 0, 0.15);
+    background-color: var(--bg-light-mode);
+    width: 100%;
+    max-width: 54rem;
+}
+.dark .tasks {
+    background-color: var(--card-dark-mode);
+}
+.task-container {
+    border-bottom: 2px solid var(--border-light-mode);
+}
+.dark .task-container {
+    border-bottom: 2px solid var(--border-dark-mode);
+}
+.task-container-task {
+    display: flex;
+    padding: 2rem 2.4rem;
+    align-items: center;
+    cursor: pointer;
+}
+.task-container-task-checkbox {
+    position: relative;
+    cursor: pointer;
+    font-size: 2.4rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.task-container-task-checkbox input {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+}
+.task-container-task-checkbox_check {
+    height: 2.4rem;
+    width: 2.4rem;
+    border-radius: 50%;
+    border: 2px solid var(--border-light-mode);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.dark .task-container-task-checkbox_check {
+    border-color: var(--border-dark-mode);
+}
+.taskDone .task-container-task-checkbox_check:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(var(--check-box-mode));
+    position: absolute;
+    transition: all ease-in 500ms;
+}
+.taskDone .task-container-task-checkbox_check:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 10;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../img/icon-check.svg");
+    transition: all ease-in 500ms;
+}
+.task-container-task_added {
+    margin-left: 4.8rem;
+}
+.taskDone .task-container-task_added {
+    text-decoration: line-through;
+    color: var(--font-light-chekced);
+}
+.dark .taskDone .task-container-task_added {
+    text-decoration: line-through;
+    color: var(--font-dark-checked);
+}
+.task-container-task-remove {
+    background-color: transparent;
+    border: 0;
+    margin-left: auto;
+    opacity: 0.5;
+    width: 1.7rem;
+    height: 1.7rem;
+    display: none;
+    cursor: pointer;
+}
+.taskDone .task-container-task-remove {
+    display: block;
+}
+.tasks-counter {
+    font-size: 1.4rem;
+    margin: 2rem;
+    color: var(--font-light-chekced);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.tasks-counter-buttons {
+    display: flex;
+    gap: 2rem;
+}
+.dark .tasks-counter {
+    color: var(--font-dark-checked);
+}
+.tasks-counter input[type="button"] {
+    background-color: transparent;
+    border: 0;
+    font-size: 1.4rem;
+    color: var(--font-light-chekced);
+    font-family: inherit;
+    cursor: pointer;
+}
+.tasks-counter > input[type="button"] {
+    text-align: right;
+}
+input[type="button"].active {
+    color: var(--active-btn-mode);
+}
+.tasks input:hover {
+    opacity: 0.5;
+    transition: opacity ease-in 100ms;
+}
+/* Media Queri*/
+@media screen and (max-width: 375px) {
+    header {
+        background-image: url("../img/bg-mobile-light.jpg");
+        max-height: 20rem;
+        padding: 0 2.5rem;
+    }
+    .dark header {
+        background-image: url("../img/bg-mobile-dark.jpg");
+    }
+    .titel {
+        margin-top: 4.4rem;
+    }
+    .input {
+        max-width: 32.6rem;
+        height: 4.8rem;
+        padding: 0 0 0 2rem;
+    }
+    input::placeholder {
+        font-size: 1.2rem;
+    }
+    .input-checkmark_check {
+        height: 2rem;
+        width: 2rem;
+    }
+    input[type="text"] {
+        margin-left: 2.4rem;
+        margin-left: 2.8rem;
+        font-size: 1.2rem;
+    }
+    .tasks {
+        font-size: 1.2rem;
+    }
+    .task-container-task-checkbox_check {
+        height: 2rem;
+        width: 2rem;
+    }
+    .doneTask {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+    .tasks-counter input[type="button"] {
+        font-size: 1.2rem;
+    }
+}
+@media screen and (max-width: 768px) {
+    .tasks {
+        position: relative;
+    }
+    .tasks-counter {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .tasks-counter-buttons {
+        position: absolute;
+        border-radius: 8px;
+        box-shadow: 2px 4px 10px 2px rgba(0, 0, 0, 0.15);
+        background-color: var(--bg-light-mode);
+        width: 100%;
+        max-width: 54rem;
+        left: 50%;
+        transform: translateX(-50%);
+        justify-content: center;
+        padding: 1.6rem 0;
+        bottom: -6rem;
+    }
+    .dark .tasks-counter-buttons {
+        background-color: var(--card-dark-mode);
+    }
+}

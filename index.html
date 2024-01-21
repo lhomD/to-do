@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./source/img/favicon-32x32.png">
+  <link rel="stylesheet" href="source/style/style.css">
+  <script src="source/script/script.js"></script>
+  <title>To Do</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="titel">
+        <h1>To do</h1>
+        <button id="themeChange">
+          <img class="sunIcon" src="./source/img/icon-sun.svg" alt="Icon of the sun">
+          <img class="moonIcon" src="./source/img/icon-moon.svg" alt="Icon of the sun">
+        </button>
+      </div>
+    </header>
+    <main class="main">
+      <form class="input" id="form">
+        <div class="input-checkmark">
+          <input type="radio" name="adding">
+          <span class="input-checkmark_check"></span>
+        </div>
+        <input type="text" placeholder="Create a new todo..." id="addTaskInput">
+      </form>
+      <div class="tasks">
+        <div class="task-container" id="task-container">
+
+        </div>
+        <div class="tasks-counter">
+          <p class="tasks-counter-text">
+            <span class="tasks-counter-text_counter" id="totalTask">0</span>
+            items left
+          </p>
+          <div class="tasks-counter-buttons">
+            <input type="button" value="All" class="active">
+            <input type="button" value="Active" data-status="notDone">
+            <input type="button" value="Completed" data-status="taskDone">
+          </div>
+          <input type="button" value="Clear Completed" id="clearCompleated">
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+  </div>
+</body>
+
+</html>
