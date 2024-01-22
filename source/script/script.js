@@ -5,14 +5,10 @@ let singelTask;         //Referense to each task
 let removeTaskBtn;      //Referense to each cross
 let buttonsToSort;      //Referense to the buttons to sort task
 let createTask;         //Referense to each task
+let themeSetting;       //Referens to localstorage theme changes
 
 /* Init Function */
 function init() {
-  wrapper = document.querySelector(".wrapper");
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    wrapper.classList.add("dark");
-  }
-
   let themeChangeBtn = document.getElementById("themeChange");
   themeChangeBtn.addEventListener("click", changeTheme);
 
@@ -37,15 +33,31 @@ function init() {
   buttonsToSort.forEach(button => {
     button.addEventListener("click", sortTasks)
   });
-
+  getThemeCookie();
   getCookies();
 } //End init
 window.addEventListener("load", init);
-/* window.addEventListener("beforeunload", setCookies); */
+
+/* Theme cookies */
+function getThemeCookie() {
+  let savedTheme = localStorage.savedTheme;
+  console.log(savedTheme !== "")
+  wrapper = document.querySelector(".wrapper");
+
+  if (savedTheme !== "" && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    wrapper.classList.add("dark")
+  }
+
+} //End getThemCookie
 
 /* Function to change theme */
 function changeTheme() {
   wrapper.classList.toggle("dark");
+  if (wrapper.classList.contains("dark")) {
+    localStorage.savedTheme = "dark";
+  } else {
+    localStorage.savedTheme = "";
+  }
 } //End changeTheme
 
 /* Function while input field is active */

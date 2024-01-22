@@ -205,17 +205,17 @@ main {
 .dark .tasks {
     background-color: var(--card-dark-mode);
 }
-.task-container {
-    border-bottom: 2px solid var(--border-light-mode);
-}
-.dark .task-container {
-    border-bottom: 2px solid var(--border-dark-mode);
-}
 .task-container-task {
     display: flex;
     padding: 2rem 2.4rem;
     align-items: center;
     cursor: pointer;
+}
+.task-container-task {
+    border-bottom: 2px solid var(--border-light-mode);
+}
+.dark .task-container-task {
+    border-bottom: 2px solid var(--border-dark-mode);
 }
 .task-container-task-checkbox {
     position: relative;
@@ -240,7 +240,14 @@ main {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    transition: border-color ease-in 300ms;
 }
+.task-container-task:hover .task-container-task-checkbox_check {
+    border-color: hsla(206, 97%, 75%, 1) hsla(252, 95%, 75%, 1)
+        hsla(252, 95%, 75%, 1) hsla(206, 97%, 75%, 1);
+    opacity: 0.7;
+}
+
 .dark .task-container-task-checkbox_check {
     border-color: var(--border-dark-mode);
 }
@@ -319,6 +326,12 @@ input[type="button"].active {
 .tasks input:hover {
     opacity: 0.5;
     transition: opacity ease-in 100ms;
+}
+/* Footer */
+.footer-content {
+    text-align: center;
+    padding: 4.8rem 0;
+    font-size: 1.4rem;
 }
 /* Media Queri*/
 @media screen and (max-width: 375px) {
