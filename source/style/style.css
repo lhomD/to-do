@@ -33,6 +33,7 @@
 /* CSS codes */
 html {
     font-size: 62.5%;
+    user-select: none;
 }
 body {
     font-family: "Josefin Sans", sans-serif;
@@ -43,8 +44,6 @@ body {
     width: 100vw;
     overflow-y: scroll;
     overflow-x: hidden;
-    /* display: flex;
-    flex-direction: column; */
 }
 .wrapper {
     transition: color ease-in 500ms, background-color ease-in 500ms;
@@ -210,7 +209,13 @@ main {
     padding: 2rem 2.4rem;
     align-items: center;
     cursor: pointer;
+    transition: background-color ease-in 300ms;
 }
+.task-container-task.drag {
+    background-color: var(--border-light-mode);
+    border-radius: 8px;
+}
+
 .task-container-task {
     border-bottom: 2px solid var(--border-light-mode);
 }
@@ -376,6 +381,9 @@ input[type="button"].active {
     }
     .tasks-counter input[type="button"] {
         font-size: 1.2rem;
+    }
+    .footer-content {
+        padding: 8.6rem 0 4rem;
     }
 }
 @media screen and (max-width: 768px) {

@@ -1,11 +1,11 @@
+import { dragStarted, dragEnded } from "./drag.js";
 let wrapper;            //Referense to wrapper to change color theme
 let checkmarkActive;    //Referens to the input field
 let formValue;          //Referense Input value to add
-let singelTask;         //Referense to each task
+/* let singelTask;  */        //Referense to each task
 let removeTaskBtn;      //Referense to each cross
 let buttonsToSort;      //Referense to the buttons to sort task
 let createTask;         //Referense to each task
-let themeSetting;       //Referens to localstorage theme changes
 
 /* Init Function */
 function init() {
@@ -21,13 +21,14 @@ function init() {
   formValue = document.getElementById("form");
   formValue.addEventListener("submit", addNewTask)
 
-  singelTask = document.querySelectorAll(".task-container-task");
+  /* singelTask = document.querySelectorAll(".task-container-task");
+  console.log()
   if (singelTask) {
     singelTask.forEach((task) => {
       task.addEventListener("click", taskToCheck)
       allTasksCounter();
     })
-  };
+  }; */
 
   buttonsToSort = document.querySelectorAll(".tasks-counter-buttons input")
   buttonsToSort.forEach(button => {
@@ -41,7 +42,6 @@ window.addEventListener("load", init);
 /* Theme cookies */
 function getThemeCookie() {
   let savedTheme = localStorage.savedTheme;
-  console.log(savedTheme !== "")
   wrapper = document.querySelector(".wrapper");
 
   if (savedTheme !== "" && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -93,7 +93,7 @@ function taskToCheck() {
 
 /* Function to count all task */
 function allTasksCounter() {
-  singelTask = document.querySelectorAll(".task-container-task");
+  let singelTask = document.querySelectorAll(".task-container-task");
   let totalTask = document.getElementById("totalTask"); //Referense to all tasks counter
   totalTask.innerHTML = singelTask.length
 
@@ -104,6 +104,11 @@ function allTasksCounter() {
   removeTaskBtn.forEach((remove) => {
     remove.addEventListener("click", removeThisTask)
   })
+
+  singelTask.forEach(task => {
+    task.addEventListener("dragstart", dragStarted);
+    task.addEventListener("dragend", dragEnded);
+  });
 } //End allTasksCounter
 
 /* Function to remove compleated Task */
@@ -127,6 +132,7 @@ function createNewTask(value, arg) {
   let taskContainer = document.getElementById("task-container");
   createTask = document.createElement("div");
   createTask.classList.add("task-container-task", arg ? arg : "notDone");
+  createTask.draggable = "true";
   createTask.innerHTML = `
       <div class="task-container-task-checkbox">
         <input type="radio" name="adding">
@@ -137,7 +143,7 @@ function createNewTask(value, arg) {
         <img src="./source/img/icon-cross.svg" alt="Cross icon">
       </button>
   `
-  createTask.addEventListener("click", taskToCheck)
+  createTask.addEventListener("click", taskToCheck);
   taskContainer.prepend(createTask)
   allTasksCounter();
 } //End createNewTask
