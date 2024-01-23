@@ -45,6 +45,10 @@ body {
     overflow-y: scroll;
     overflow-x: hidden;
 }
+.wrapper.no-scroll {
+    height: 100vh;
+    overflow-y: hidden;
+}
 .wrapper {
     transition: color ease-in 500ms, background-color ease-in 500ms;
     background-color: var(--bg-light-mode);
@@ -382,9 +386,6 @@ input[type="button"].active {
     .tasks-counter input[type="button"] {
         font-size: 1.2rem;
     }
-    .footer-content {
-        padding: 8.6rem 0 4rem;
-    }
 }
 @media screen and (max-width: 768px) {
     .tasks {
@@ -408,5 +409,8 @@ input[type="button"].active {
     }
     .dark .tasks-counter-buttons {
         background-color: var(--card-dark-mode);
+    }
+    .footer-content {
+        padding: 8.6rem 0 4rem;
     }
 }

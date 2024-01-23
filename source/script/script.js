@@ -1,3 +1,4 @@
+export { wrapper };
 import { dragStarted, dragEnded } from "./drag.js";
 let wrapper;            //Referense to wrapper to change color theme
 let checkmarkActive;    //Referens to the input field
@@ -108,6 +109,7 @@ function allTasksCounter() {
   singelTask.forEach(task => {
     task.addEventListener("dragstart", dragStarted);
     task.addEventListener("dragend", dragEnded);
+    /* Touch Screen */
   });
 } //End allTasksCounter
 
