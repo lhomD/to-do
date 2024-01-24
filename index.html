@@ -4,9 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Todo App">
+  <meta name="author" content="Ilhom Dadadjanov">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!--Meta tags OG  -->
+  <meta property="og:site_name" content="To-Do App" />
+  <meta property="og:title" content="To-Do App" />
+  <meta property="og:description" content="Write down your things to do" />
+  <meta property="og:url" content="https://lovely-gumption-e5b893.netlify.app" />
+  <meta property="og:image" content="https://lovely-gumption-e5b893.netlify.app/img/favicon-32x32.png" />
+  <meta property="og:image:width" content="1280" />
+  <meta property="og:image:height" content="640" />
+  <!-- Links -->
   <link rel="icon" type="image/png" sizes="32x32" href="./source/img/favicon-32x32.png">
   <link rel="stylesheet" href="source/style/style.css">
   <script type="module" src="source/script/script.js"></script>
+  <script id="DragDropTouch" src="https://bernardo-castilho.github.io/DragDropTouch/DragDropTouch.js"></script>
   <title>To Do</title>
 </head>
 
@@ -14,15 +28,15 @@
   <div class="wrapper">
     <header>
       <div class="titel">
-        <h1>To do</h1>
-        <button id="themeChange">
+        <h1 role="heading" aria-level="1">To do</h1>
+        <button role="button" id="themeChange">
           <img class="sunIcon" src="./source/img/icon-sun.svg" alt="Icon of the sun">
-          <img class="moonIcon" src="./source/img/icon-moon.svg" alt="Icon of the sun">
+          <img role="img" class="moonIcon" src="./source/img/icon-moon.svg" alt="Icon of the sun">
         </button>
       </div>
     </header>
     <main class="main">
-      <form class="input" id="form">
+      <form role="form" class="input" id="form">
         <div class="input-checkmark">
           <input type="radio" name="adding">
           <span class="input-checkmark_check"></span>

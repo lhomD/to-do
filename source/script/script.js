@@ -1,9 +1,8 @@
-export { wrapper };
+export { setCookies };
 import { dragStarted, dragEnded } from "./drag.js";
 let wrapper;            //Referense to wrapper to change color theme
 let checkmarkActive;    //Referens to the input field
 let formValue;          //Referense Input value to add
-/* let singelTask;  */        //Referense to each task
 let removeTaskBtn;      //Referense to each cross
 let buttonsToSort;      //Referense to the buttons to sort task
 let createTask;         //Referense to each task
@@ -21,15 +20,6 @@ function init() {
 
   formValue = document.getElementById("form");
   formValue.addEventListener("submit", addNewTask)
-
-  /* singelTask = document.querySelectorAll(".task-container-task");
-  console.log()
-  if (singelTask) {
-    singelTask.forEach((task) => {
-      task.addEventListener("click", taskToCheck)
-      allTasksCounter();
-    })
-  }; */
 
   buttonsToSort = document.querySelectorAll(".tasks-counter-buttons input")
   buttonsToSort.forEach(button => {
