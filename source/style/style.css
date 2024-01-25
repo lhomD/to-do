@@ -215,10 +215,6 @@ main {
     cursor: pointer;
     transition: background-color ease-in 300ms;
 }
-.task-container-task.drag {
-    background-color: var(--border-light-mode);
-    border-radius: 8px;
-}
 
 .task-container-task {
     border-bottom: 2px solid var(--border-light-mode);

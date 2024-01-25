@@ -77,14 +77,14 @@ function addNewTask(e) {
 
 /* Check if task is done */
 function taskToCheck() {
-  this.classList.toggle("taskDone",);
-  this.classList.toggle("notDone",);
+  this.parentNode.classList.toggle("taskDone")
+  this.parentNode.classList.toggle("notDone")
   setCookies();
 } //End taskToCheck
 
 /* Function to count all task */
 function allTasksCounter() {
-  let singelTask = document.querySelectorAll(".task-container-task");
+  let singelTask = document.querySelectorAll(".task-container-task_added");
   let totalTask = document.getElementById("totalTask"); //Referense to all tasks counter
   totalTask.innerHTML = singelTask.length
 
@@ -95,12 +95,17 @@ function allTasksCounter() {
   removeTaskBtn.forEach((remove) => {
     remove.addEventListener("click", removeThisTask)
   })
-
+  /* Add drag and drop to all task */
   singelTask.forEach(task => {
     task.addEventListener("dragstart", dragStarted);
     task.addEventListener("dragend", dragEnded);
     /* Touch Screen */
   });
+  /* Add click function to all checkboxes */
+  let checkUncheckTask = document.querySelectorAll(".task-container-task-checkbox");
+  checkUncheckTask.forEach(taskCheckUncheck => {
+    taskCheckUncheck.addEventListener("click", taskToCheck);
+  })
 } //End allTasksCounter
 
 /* Function to remove compleated Task */
@@ -124,18 +129,16 @@ function createNewTask(value, arg) {
   let taskContainer = document.getElementById("task-container");
   createTask = document.createElement("div");
   createTask.classList.add("task-container-task", arg ? arg : "notDone");
-  createTask.draggable = "true";
   createTask.innerHTML = `
       <div class="task-container-task-checkbox">
         <input type="radio" name="adding">
         <span class="task-container-task-checkbox_check"></span>
       </div>
-      <p class="task-container-task_added">${value}</p>
+      <p class="task-container-task_added" draggable="true">${value}</p>
       <button class="task-container-task-remove">
         <img src="./source/img/icon-cross.svg" alt="Cross icon">
       </button>
   `
-  createTask.addEventListener("click", taskToCheck);
   taskContainer.prepend(createTask)
   allTasksCounter();
 } //End createNewTask
