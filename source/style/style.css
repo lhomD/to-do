@@ -33,7 +33,7 @@
 /* CSS codes */
 html {
     font-size: 62.5%;
-    /* user-select: none; */
+    user-select: none;
 }
 body {
     font-family: "Josefin Sans", sans-serif;
@@ -88,14 +88,17 @@ header {
     border: 0;
     cursor: pointer;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: end;
+    flex-direction: column;
+    gap: 0.4rem;
     overflow: hidden;
-    width: 2.6rem;
+    width: 8rem;
+    height: 3.4rem;
+    padding: 0.4rem;
 }
 .dark header button img {
     transition: transform ease-in 500ms;
-    transform: translateX(-2.6rem);
+    transform: translateY(-3rem);
 }
 .wrapper button img {
     transition: transform ease-in 500ms;
@@ -210,12 +213,13 @@ main {
 }
 .task-container-task {
     display: flex;
-    padding: 2rem 2.4rem;
+    padding: 0 2.4rem;
     align-items: center;
     cursor: pointer;
     transition: background-color ease-in 300ms;
+    max-height: 5.4rem;
+    height: 5.4rem;
 }
-
 .task-container-task {
     border-bottom: 2px solid var(--border-light-mode);
 }
@@ -255,7 +259,6 @@ main {
         hsla(252, 95%, 75%, 1) hsla(206, 97%, 75%, 1);
     opacity: 0.7;
 }
-
 .dark .task-container-task-checkbox_check {
     border-color: var(--border-dark-mode);
 }
@@ -281,6 +284,11 @@ main {
 }
 .task-container-task_added {
     margin-left: 4.8rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 75%;
+    overflow: hidden;
 }
 .taskDone .task-container-task_added {
     text-decoration: line-through;

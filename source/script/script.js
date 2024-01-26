@@ -95,11 +95,7 @@ function allTasksCounter() {
   removeTaskBtn.forEach((remove) => {
     remove.addEventListener("click", removeThisTask)
   })
-  /* Add drag and drop to all task */
-  /*  singelTask.forEach(task => {
-     task.addEventListener("dragstart", dragStarted);
-     task.addEventListener("dragend", dragEnded);
-   }); */
+  
   /* Add click function to all checkboxes */
   let checkUncheckTask = document.querySelectorAll(".task-container-task-checkbox");
   checkUncheckTask.forEach(taskCheckUncheck => {
