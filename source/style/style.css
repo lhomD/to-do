@@ -222,6 +222,9 @@ main {
 .dark .task-container-task {
     border-bottom: 2px solid var(--border-dark-mode);
 }
+.task-container-task.drag {
+    opacity: 0.7;
+}
 .task-container-task-checkbox {
     position: relative;
     cursor: pointer;

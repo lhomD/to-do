@@ -96,11 +96,10 @@ function allTasksCounter() {
     remove.addEventListener("click", removeThisTask)
   })
   /* Add drag and drop to all task */
-  singelTask.forEach(task => {
-    task.addEventListener("dragstart", dragStarted);
-    task.addEventListener("dragend", dragEnded);
-    /* Touch Screen */
-  });
+  /*  singelTask.forEach(task => {
+     task.addEventListener("dragstart", dragStarted);
+     task.addEventListener("dragend", dragEnded);
+   }); */
   /* Add click function to all checkboxes */
   let checkUncheckTask = document.querySelectorAll(".task-container-task-checkbox");
   checkUncheckTask.forEach(taskCheckUncheck => {
@@ -139,6 +138,8 @@ function createNewTask(value, arg) {
         <img src="./source/img/icon-cross.svg" alt="Cross icon">
       </button>
   `
+  createTask.addEventListener("dragstart", dragStarted);
+  createTask.addEventListener("dragend", dragEnded);
   taskContainer.prepend(createTask)
   allTasksCounter();
 } //End createNewTask

@@ -1,7 +1,7 @@
 export { dragStarted, dragEnded };
 import { setCookies } from "./script.js";
-let dragElem;
-let oldTask;
+let taskContainer = document.getElementById("task-container")
+
 /* Runs when drag starts */
 function dragStarted(e) {
   let eachTaskText = document.querySelectorAll(".task-container-task_added");
@@ -10,13 +10,12 @@ function dragStarted(e) {
     eachTask.addEventListener("dragleave", dropZone);
     eachTask.addEventListener("drop", dropZone);
   });
-
-  dragElem = this;
+  this.classList.add("drag");
 } // End dragStarted
 
 /* Runs dragend starts */
 function dragEnded() {
-  dragElem.innerHTML = oldTask;
+  this.classList.remove("drag");
 } // End dragEnded
 
 /* Three functions runs depending on conditions */
@@ -28,10 +27,28 @@ function dropZone(e) {
     this.style.opacity = "1";
   } else if (e.type == "drop") {
     this.style.opacity = "1";
-    oldTask = this.innerHTML;
-    this.innerHTML = "";
-    this.innerHTML = dragElem.innerHTML;
+    let afterElem = getDragedElementAfter(taskContainer, e.clientY);
+    const dragingElem = document.querySelector('.drag')
+    if (afterElem == null) {
+      taskContainer.appendChild(draggable)
+    } else {
+      taskContainer.insertBefore(dragingElem, afterElem)
+    }
     setCookies();
   }
 } // End dropZone
-// End getDragedElementAfter
+
+/* Helper function to get data about where to place dragged element */
+function getDragedElementAfter(container, position) {
+  let dragedElem = [...container.querySelectorAll(".task-container-task:not(.drag)")];
+
+  return dragedElem.reduce((closest, child) => {
+    const box = child.getBoundingClientRect()
+    const offset = position - box.top - box.height / 2
+    if (offset < 0 && offset > closest.offset) {
+      return { offset: offset, element: child }
+    } else {
+      return closest
+    }
+  }, { offset: Number.NEGATIVE_INFINITY }).element
+} // End getDragedElementAfter
