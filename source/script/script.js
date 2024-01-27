@@ -95,7 +95,7 @@ function allTasksCounter() {
   removeTaskBtn.forEach((remove) => {
     remove.addEventListener("click", removeThisTask)
   })
-  
+
   /* Add click function to all checkboxes */
   let checkUncheckTask = document.querySelectorAll(".task-container-task-checkbox");
   checkUncheckTask.forEach(taskCheckUncheck => {
@@ -127,7 +127,7 @@ function createNewTask(value, arg) {
   createTask.innerHTML = `
       <div class="task-container-task-checkbox">
         <input type="radio" name="adding">
-        <span class="task-container-task-checkbox_check"></span>
+        <label class="task-container-task-checkbox_check"></label>
       </div>
       <p class="task-container-task_added" draggable="true">${value}</p>
       <button class="task-container-task-remove">
