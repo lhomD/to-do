@@ -122,7 +122,7 @@ function removeThisTask(e) {
 /* Create new task div */
 function createNewTask(value, arg) {
   let taskContainer = document.getElementById("task-container");
-  createTask = document.createElement("div");
+  createTask = document.createElement("li");
   createTask.classList.add("task-container-task", arg ? arg : "notDone");
   createTask.innerHTML = `
       <div class="task-container-task-checkbox">

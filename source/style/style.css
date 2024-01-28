@@ -211,6 +211,9 @@ main {
 .dark .tasks {
     background-color: var(--card-dark-mode);
 }
+.task-container {
+    list-style: none;
+}
 .task-container-task {
     display: flex;
     padding: 0 2.4rem;
